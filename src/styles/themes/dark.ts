@@ -1,0 +1,27 @@
+export const darkTheme = {
+  "green-100": "#1B5527",
+  "green-300": "#54AE6D",
+  "green-500": "#62FF8E",
+  "green-700": "#9BDDAD",
+  "green-900": "#D5FDE0",
+
+  "foreground-100": "#051703",
+  "foreground-200": "#191E18",
+  "foreground-300": "#5C5D5C",
+  "foreground-400": "#98A39B",
+  "foreground-500": "#B6C2B5",
+  "foreground-600": "#E2E5E2",
+  "foreground-700": "#F5F5F5",
+  "foreground-800": "#F9FFF8",
+  "foreground-900": "#FFFFFF",
+
+  "background-100": "#051703",
+  "background-200": "#191E18",
+  "background-300": "#5C5D5C",
+  "background-400": "#98A39B",
+  "background-500": "#B6C2B5",
+  "background-600": "#E2E5E2",
+  "background-700": "#F5F5F5",
+  "background-800": "#F9FFF8",
+  "background-900": "#FFFFFF",
+};
