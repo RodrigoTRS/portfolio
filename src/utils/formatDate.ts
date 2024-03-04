@@ -1,5 +1,9 @@
+import dayjs from "dayjs";
+
 export function formatDate(date: Date) {
   const newDate =
-    date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+    String(dayjs(date).get("month") + 1).padStart(2, "0") +
+    "/" +
+    dayjs(date).get("year");
   return newDate;
 }
