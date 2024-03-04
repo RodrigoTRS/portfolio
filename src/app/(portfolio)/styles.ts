@@ -8,7 +8,7 @@ export const MainContainer = styled.main`
   align-items: center;
   justify-content: flex-start;
 
-  padding: 64px 16px;
+  padding: 128px 16px;
 `;
 
 export const HomeContent = styled.div`
@@ -18,7 +18,6 @@ export const HomeContent = styled.div`
   justify-content: center;
   gap: 1rem;
   max-width: 400px;
-  padding: 64px 0 128px;
 
   h1 {
     text-align: center;

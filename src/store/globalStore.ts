@@ -2,13 +2,16 @@ import { create } from "zustand";
 
 export interface PlayerState {
   colorSchema: "dark" | "light";
+  isMobileMenuOpen: boolean;
 
   toggleColorSchema: () => void;
+  toggleMobileMenu: () => void;
 }
 
-export const useStore = create<PlayerState>((set, get) => {
+export const useGlobalStore = create<PlayerState>((set, get) => {
   return {
     colorSchema: "light",
+    isMobileMenuOpen: true,
 
     toggleColorSchema: () => {
       const { colorSchema } = get();
@@ -20,6 +23,20 @@ export const useStore = create<PlayerState>((set, get) => {
       } else {
         set({
           colorSchema: "light",
+        });
+      }
+    },
+
+    toggleMobileMenu: () => {
+      const { isMobileMenuOpen } = get();
+
+      if (isMobileMenuOpen) {
+        set({
+          isMobileMenuOpen: false,
+        });
+      } else {
+        set({
+          isMobileMenuOpen: true,
         });
       }
     },

@@ -1,6 +1,6 @@
 "use client";
 
-import { GithubLogo, InstagramLogo, LinkedinLogo } from "phosphor-react";
+import { GithubLogo, LinkedinLogo } from "phosphor-react";
 import { FooterContainer, FooterContent, LinkIcon, LinksWrapper } from "./styles";
 
 export function Footer() {

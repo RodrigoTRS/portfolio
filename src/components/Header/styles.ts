@@ -4,6 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
+  min-height: 74px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,7 +14,7 @@ export const HeaderContainer = styled.header`
   background: ${(props) => props.theme["background-100"]};
 `;
 
-export const HeaderContent = styled.div`
+export const DesktopHeaderContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,6 +23,24 @@ export const HeaderContent = styled.div`
   max-width: 1120px;
 
   padding: 0 16px;
+
+  @media (max-width: 720px) {
+    display: none;
+  }
+`;
+
+export const MobileHeaderContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  padding: 0 16px;
+
+  @media (min-width: 720px) {
+    display: none;
+  }
 `;
 
 export const HeaderSection = styled.div`
@@ -54,11 +73,13 @@ export const NavLink = styled(Link)<NavLinkProps>`
   color: ${(props) => props.theme["foreground-800"]};
   font-weight: 500;
 
-  box-sizing: content-box;
-  box-shadow: 0 3px 0 0
+  box-sizing: border-box;
+  box-shadow: unset;
+  padding: 24px 0 20px;
+
+  border-bottom: 4px solid
     ${(props) =>
       props.active === "active" ? props.theme["green-500"] : "transparent"};
-  padding: 24px 0;
 
   &:hover {
     color: ${(props) => props.theme["green-700"]};
@@ -98,5 +119,35 @@ export const LinkIcon = styled(Link)`
 
   &:hover {
     color: ${(props) => props.theme["green-700"]};
+  }
+`;
+
+export const MobileMenuWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100vh;
+  background: ${(props) => props.theme["background-200"]};
+  border-left: 1px solid ${(props) => props.theme["background-300"]};
+`;
+
+export const MobileNavContainer = styled.nav`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+`;
+
+export const MobileAnchorLink = styled(Link)`
+  box-shadow: unset;
+  font-size: 1rem;
+  text-decoration: none;
+  color: ${(props) => props.theme["foreground-900"]};
+
+  &:hover {
+    color: ${(props) => props.theme["green-500"]};
   }
 `;

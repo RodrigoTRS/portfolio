@@ -34,7 +34,7 @@ export const Button = styled.button<ButtonProps>`
     ${(props) =>
       props.variant === "primary"
         ? "transparent"
-        : props.theme["foreground-400"]};
+        : props.theme["foreground-300"]};
 
   &:not(:disabled):hover {
     cursor: pointer;

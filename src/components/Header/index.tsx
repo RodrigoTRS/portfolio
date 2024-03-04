@@ -1,19 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { ButtonsSection, HeaderContainer, HeaderContent, HeaderSection, HomeAnchorLink, LinkIcon, LinksWrapper, NavContainer, NavLink } from "./styles";
+import { ButtonsSection, HeaderContainer, DesktopHeaderContent, HeaderSection, HomeAnchorLink, LinkIcon, LinksWrapper, NavContainer, NavLink, MobileHeaderContent, MobileMenuWrapper, MobileNavContainer, MobileAnchorLink } from "./styles";
 import Logo from "../../assets/logo.png"
 import { usePathname } from "next/navigation";
 import { Button } from "@/ui/Button";
-import { GithubLogo, InstagramLogo, LinkedinLogo, Moon, Sun } from "phosphor-react";
-import { useStore } from "@/store";
+import { GithubLogo, InstagramLogo, LinkedinLogo, List, Moon, Sun, X } from "phosphor-react";
+import { useGlobalStore } from "@/store/globalStore";
 
 export function Header() {
 
-    const { colorSchama, toggleColorSchema } = useStore(store => {
+    const { colorSchama, isMobileMenuOpen, toggleColorSchema, toogleMobileMenu } = useGlobalStore(store => {
         return {
             colorSchama: store.colorSchema,
-            toggleColorSchema: store.toggleColorSchema
+            isMobileMenuOpen: store.isMobileMenuOpen,
+            toggleColorSchema: store.toggleColorSchema,
+            toogleMobileMenu: store.toggleMobileMenu
         }
     })
 
@@ -34,13 +36,10 @@ export function Header() {
         }
     ]
 
-    function handleToggleColorSchema() {
-        toggleColorSchema()
-    }
-
     return (
         <HeaderContainer>
-            <HeaderContent>
+
+            <DesktopHeaderContent>
 
                 <HeaderSection>
                     <HomeAnchorLink href="/">
@@ -83,7 +82,7 @@ export function Header() {
                         <Button
                             size="square"
                             variant="secondary"
-                            onClick={handleToggleColorSchema}
+                            onClick={toggleColorSchema}
                             >
                             {
                                 colorSchama === "light"
@@ -95,7 +94,65 @@ export function Header() {
 
                 </HeaderSection>
 
-            </HeaderContent>
+            </DesktopHeaderContent>
+
+            <MobileHeaderContent>
+                    <HomeAnchorLink href="/">
+                        <Image src={Logo} alt="" />
+                    </HomeAnchorLink>
+                    <ButtonsSection>
+                        <Button
+                            size="square"
+                            variant="secondary"
+                            onClick={toogleMobileMenu}
+                            >
+                                <List size={20} />
+                        </Button>
+                    </ButtonsSection>
+                    { isMobileMenuOpen &&
+                        <MobileMenuWrapper>
+                            <MobileNavContainer>
+                                <Button
+                                    size="square"
+                                    variant="secondary"
+                                    onClick={toogleMobileMenu}
+                                    >
+                                        <X size={20} />
+                                </Button>
+                                {navLinks.map((link, index) => {
+                                    return (
+                                        <MobileAnchorLink
+                                            key={index}
+                                            href={link.path}
+                                            onClick={toogleMobileMenu}
+                                        >
+                                            {link.title}
+                                        </MobileAnchorLink>
+                                    )
+                                })}
+                                <ButtonsSection>
+                                    <Button
+                                        size="bg"
+                                        variant="primary"
+                                        >
+                                        Get in touch
+                                    </Button>
+                                    <Button
+                                        size="square"
+                                        variant="secondary"
+                                        onClick={toggleColorSchema}
+                                        >
+                                        {
+                                            colorSchama === "light"
+                                            ? <Moon size={20} />
+                                            : <Sun size={20} />
+                                        }
+                                    </Button>
+                                </ButtonsSection>
+                            </MobileNavContainer>
+                        </MobileMenuWrapper>
+                    }
+            </MobileHeaderContent>
         </HeaderContainer>
     )
 }
