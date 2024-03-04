@@ -18,6 +18,7 @@ export const HomeContent = styled.div`
   justify-content: center;
   gap: 1rem;
   max-width: 400px;
+  padding: 64px 16px 64px;
 
   h1 {
     text-align: center;

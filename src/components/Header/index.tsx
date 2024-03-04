@@ -5,8 +5,10 @@ import { ButtonsSection, HeaderContainer, DesktopHeaderContent, HeaderSection, H
 import Logo from "../../assets/logo.png"
 import { usePathname } from "next/navigation";
 import { Button } from "@/ui/Button";
-import { GithubLogo, InstagramLogo, LinkedinLogo, List, Moon, Sun, X } from "phosphor-react";
+import { GithubLogo, LinkedinLogo, List, Moon, Sun, X } from "phosphor-react";
 import { useGlobalStore } from "@/store/globalStore";
+import * as Dialog from '@radix-ui/react-dialog';
+
 
 export function Header() {
 
@@ -73,12 +75,14 @@ export function Header() {
 
 
                     <ButtonsSection>
-                        <Button
-                            size="bg"
-                            variant="primary"
-                            >
-                            Get in touch
-                        </Button>
+                        <Dialog.Trigger asChild>
+                            <Button
+                                size="bg"
+                                variant="primary"
+                                >
+                                Get in touch
+                            </Button>
+                        </Dialog.Trigger>
                         <Button
                             size="square"
                             variant="secondary"

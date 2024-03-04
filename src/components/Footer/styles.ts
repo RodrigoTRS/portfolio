@@ -20,12 +20,14 @@ export const FooterContent = styled.div`
   max-width: 1120px;
   padding: 64px 16px 64px;
   gap: 0.5rem;
+  text-align: center;
 
   border-top: 1px solid ${(props) => props.theme["background-300"]};
 
   span {
     font-size: 0.75rem;
     color: ${(props) => props.theme["foreground-700"]};
+    text-align: center;
   }
 `;
 
