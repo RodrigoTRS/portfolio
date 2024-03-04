@@ -1,8 +1,10 @@
+"use client";
+
 import { styled } from "styled-components";
 
 interface ButtonProps {
   variant: "primary" | "secondary";
-  size: "bg" | "sm";
+  size: "bg" | "sm" | "square";
 }
 
 export const Button = styled.button<ButtonProps>`
@@ -16,7 +18,12 @@ export const Button = styled.button<ButtonProps>`
   border: unset;
   font-family: inherit;
 
-  padding: ${(props) => (props.size === "bg" ? "12px 24px" : "6px 12px")};
+  padding: ${(props) =>
+    props.size === "bg"
+      ? "8px 24px"
+      : props.size === "sm"
+      ? "4px 12px"
+      : "12px 12px"};
   background: ${(props) =>
     props.variant === "primary" ? props.theme["green-500"] : "transparent"};
   color: ${(props) => props.theme["foreground-900"]};
@@ -29,6 +36,11 @@ export const Button = styled.button<ButtonProps>`
   &:not(:disabled):hover {
     cursor: pointer;
     opacity: 0.8;
+    border: 2px solid
+      ${(props) =>
+        props.variant === "secondary"
+          ? props.theme["green-500"]
+          : "transparent"};
   }
 
   &:disabled {

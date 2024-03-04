@@ -47,11 +47,11 @@ export const NavLink = styled(Link)<NavLinkProps>`
   color: ${(props) => props.theme["foreground-800"]};
   font-weight: 500;
 
-  box-shadow: unset;
-  border-bottom: 4px solid
+  box-sizing: content-box;
+  box-shadow: 0 3px 0 0
     ${(props) =>
       props.active === "active" ? props.theme["green-500"] : "transparent"};
-  padding: 24px 4px;
+  padding: 24px 0;
 
   &:hover {
     color: ${(props) => props.theme["green-700"]};
@@ -60,6 +60,12 @@ export const NavLink = styled(Link)<NavLinkProps>`
 
 export const HomeAnchorLink = styled(Link)`
   box-shadow: unset;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
 
   &:hover {
     opacity: 0.8;

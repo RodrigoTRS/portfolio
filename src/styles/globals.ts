@@ -14,8 +14,18 @@ export const GlobalStyles = createGlobalStyle`
         box-shadow: 0px 0px 0px 2px ${(props) => props.theme["green-500"]}
     }
 
+    ::-moz-selection { /* Code for Firefox */
+        color: ${(props) => props.theme["foreground-900"]};
+        background: ${(props) => props.theme["green-500"]};
+    }
+
+    ::selection {
+        color: ${(props) => props.theme["foreground-900"]};
+        background: ${(props) => props.theme["green-500"]};
+    }
+
     body {
-        background: ${(props) => props.theme["background-300"]};
+        background: ${(props) => props.theme["background-200"]};
         color: ${(props) => props.theme["foreground-900"]};
         -webkit-font-smoothing: antialiased;
     }
