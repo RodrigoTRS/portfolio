@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { HeaderContainer, HeaderContent, HeaderSection, HomeAnchorLink, LinkIcon, LinksWrapper, NavContainer, NavLink } from "./styles";
+import { ButtonsSection, HeaderContainer, HeaderContent, HeaderSection, HomeAnchorLink, LinkIcon, LinksWrapper, NavContainer, NavLink } from "./styles";
 import Logo from "../../assets/logo.png"
 import { usePathname } from "next/navigation";
 import { Button } from "@/ui/Button";
@@ -72,23 +72,26 @@ export function Header() {
                         </LinkIcon>
                     </LinksWrapper>
 
-                    <Button
-                        size="bg"
-                        variant="primary"
-                    >
-                        Get in touch
-                    </Button>
-                    <Button
-                        size="square"
-                        variant="secondary"
-                        onClick={handleToggleColorSchema}
-                    >
-                        {
-                            colorSchama === "light"
-                            ? <Moon size={24} />
-                            : <Sun size={24} />
-                        }
-                    </Button>
+
+                    <ButtonsSection>
+                        <Button
+                            size="bg"
+                            variant="primary"
+                            >
+                            Get in touch
+                        </Button>
+                        <Button
+                            size="square"
+                            variant="secondary"
+                            onClick={handleToggleColorSchema}
+                            >
+                            {
+                                colorSchama === "light"
+                                ? <Moon size={20} />
+                                : <Sun size={20} />
+                            }
+                        </Button>
+                    </ButtonsSection>
 
                 </HeaderSection>
 

@@ -21,7 +21,7 @@ export const FooterContent = styled.div`
   padding: 64px 16px 64px;
   gap: 0.5rem;
 
-  border-top: 1px solid ${(props) => props.theme["background-400"]};
+  border-top: 1px solid ${(props) => props.theme["background-300"]};
 
   span {
     font-size: 0.75rem;

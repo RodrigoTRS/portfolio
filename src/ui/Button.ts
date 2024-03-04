@@ -26,7 +26,10 @@ export const Button = styled.button<ButtonProps>`
       : "12px 12px"};
   background: ${(props) =>
     props.variant === "primary" ? props.theme["green-500"] : "transparent"};
-  color: ${(props) => props.theme["foreground-900"]};
+  color: ${(props) =>
+    props.variant === "primary"
+      ? props.theme["black"]
+      : props.theme["foreground-900"]};
   border: 2px solid
     ${(props) =>
       props.variant === "primary"

@@ -8,7 +8,7 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: center;
   width: 100%;
-  border-bottom: 1px solid ${(props) => props.theme["background-400"]};
+  border-bottom: 1px solid ${(props) => props.theme["background-300"]};
 
   background: ${(props) => props.theme["background-100"]};
 `;
@@ -29,6 +29,13 @@ export const HeaderSection = styled.div`
   align-items: center;
   justify-content: center;
   gap: 2rem;
+`;
+
+export const ButtonsSection = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 `;
 
 export const NavContainer = styled.nav`
