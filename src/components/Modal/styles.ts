@@ -20,6 +20,7 @@ export const ModalContainer = styled(Dialog.Content)`
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 440px;
+  min-width: 360px;
 
   gap: 1.5rem;
   padding: 2rem;

@@ -137,7 +137,7 @@ export const MobileNavContainer = styled.nav`
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: 2rem;
   padding: 1rem;
 `;
 

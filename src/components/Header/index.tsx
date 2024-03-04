@@ -135,12 +135,14 @@ export function Header() {
                                     )
                                 })}
                                 <ButtonsSection>
-                                    <Button
-                                        size="bg"
-                                        variant="primary"
-                                        >
-                                        Get in touch
-                                    </Button>
+                                    <Dialog.Trigger asChild>
+                                        <Button
+                                            size="bg"
+                                            variant="primary"
+                                            >
+                                            Get in touch
+                                        </Button>
+                                    </Dialog.Trigger>
                                     <Button
                                         size="square"
                                         variant="secondary"
