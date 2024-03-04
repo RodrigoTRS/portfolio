@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export interface PlayerState {
+export interface GlobalState {
   colorSchema: "dark" | "light";
   isMobileMenuOpen: boolean;
 
@@ -8,10 +8,10 @@ export interface PlayerState {
   toggleMobileMenu: () => void;
 }
 
-export const useGlobalStore = create<PlayerState>((set, get) => {
+export const useGlobalStore = create<GlobalState>((set, get) => {
   return {
     colorSchema: "light",
-    isMobileMenuOpen: true,
+    isMobileMenuOpen: false,
 
     toggleColorSchema: () => {
       const { colorSchema } = get();
