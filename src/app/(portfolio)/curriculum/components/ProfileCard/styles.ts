@@ -24,6 +24,7 @@ export const ProfileImage = styled(Image)`
   bottom: 96px;
   border-radius: 999px;
   border: 2px solid ${(props) => props.theme["background-300"]};
+  z-index: 500;
 `;
 
 export const ProfileContent = styled.div`
