@@ -84,6 +84,10 @@ export const NavLink = styled(Link)<NavLinkProps>`
   &:hover {
     color: ${(props) => props.theme["green-700"]};
   }
+
+  &:focus {
+    box-shadow: unset;
+  }
 `;
 
 export const HomeAnchorLink = styled(Link)`

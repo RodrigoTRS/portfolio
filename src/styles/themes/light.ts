@@ -10,8 +10,8 @@ export const lightTheme = {
   "foreground-300": "#E2E5E2",
   "foreground-400": "#D7D7D7",
   "foreground-500": "#B6C2B5",
-  "foreground-600": "#98A39B",
-  "foreground-700": "#5C5D5C",
+  "foreground-600": "#515451",
+  "foreground-700": "#212620",
   "foreground-800": "#191E18",
   "foreground-900": "#111813",
 
@@ -20,8 +20,8 @@ export const lightTheme = {
   "background-300": "#E2E5E2",
   "background-400": "#D7D7D7",
   "background-500": "#B6C2B5",
-  "background-600": "#98A39B",
-  "background-700": "#5C5D5C",
+  "background-600": "#515451",
+  "background-700": "#212620",
   "background-800": "#191E18",
   "background-900": "#111813",
 

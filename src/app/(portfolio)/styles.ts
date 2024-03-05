@@ -9,6 +9,10 @@ export const MainContainer = styled.main`
   justify-content: flex-start;
 
   padding: 64px 16px 128px;
+
+  @media (max-width: 720px) {
+    padding: 32px 16px;
+  }
 `;
 
 export const HomeContent = styled.div`

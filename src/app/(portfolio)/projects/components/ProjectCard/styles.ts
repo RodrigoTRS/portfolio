@@ -3,16 +3,17 @@
 import { Button } from "@/ui/Button";
 import { styled } from "styled-components";
 
-export const CardContainer = styled.div`
+export const CardHeader = styled.header`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const CardText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 100%;
-
-  padding: 32px;
-  background: ${(props) => props.theme["background-200"]};
-  border: 1px solid ${(props) => props.theme["background-300"]};
-  border-radius: 8px;
 
   h2 {
     font-size: 1.5rem;
@@ -20,17 +21,9 @@ export const CardContainer = styled.div`
 
   p {
     font-size: 0.875rem;
-    font-weight: 300;
     line-height: 1.7;
-    color: ${(props) => props.theme["foreground-700"]};
+    color: ${(props) => props.theme["foreground-600"]};
   }
-`;
-
-export const CardHeader = styled.header`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 `;
 
 export const CategoryTag = styled.div`

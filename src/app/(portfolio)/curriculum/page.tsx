@@ -1,12 +1,13 @@
 "use client"
 
 import { useCurriculumStore } from "@/store/curriculumStore";
-import { CourseItem, CourseTag, CourseTagsContainer, CurriculumContainer, ExperienceContainer, ExperienceContent, ExperienceHeader, ExperienceImage, ExperienceModelTag, ExperienceText, ImageContainer, LanguageItem, MainColumn, PositionDate, PositionItem, PositionRow, ProfileContainer, ProfileDetails, SectionContainer, SideColumn } from "./styles";
-import Eldorado from "../../../assets/companies/eldorado.png"
-import Cover from "../../../assets/cover.png";
-
-import { CalendarBlank, Circle, MapPin } from "phosphor-react";
-import { formatDate } from "@/utils/formatDate";
+import { CurriculumContainer, CurriculumSectionWrapper, MainColumn, SideColumn } from "./styles";
+import { Box } from "@/ui/Box";
+import { ProfessinalItem } from "./components/ProfessionalItem";
+import { AcademicItem } from "./components/AcademicItem";
+import { CourseItem } from "./components/CourseItem";
+import { LanguageItem } from "./components/LanguageItem";
+import { ProfileCard } from "./components/ProfileCard";
 
 export default function Curriculum() {
 
@@ -24,154 +25,76 @@ export default function Curriculum() {
         <CurriculumContainer>
             
             <MainColumn>
-                <ImageContainer src={Cover} alt="" />
-                <ProfileContainer>
-                    <h1>Rodrigo T. Ribeiro da Silva</h1>
-                    <ProfileDetails>
-                        <span>{profile.job}</span>
-                        <span>{profile.location}</span>
-                    </ProfileDetails>
-                </ProfileContainer>
+                <ProfileCard
+                    profile={profile}
+                />
 
-                <h2>Professional Experience</h2>
-                <SectionContainer>
-                    {
-                        experiences.map((experience, index) => {
-                            return (
-                                <ExperienceContainer key={index}>
-                                    <ExperienceImage src={Eldorado} alt="" />
+                <CurriculumSectionWrapper>
+                    <h2>Professional Experience</h2>
+                    <Box>
+                        {
+                            experiences.map((experience, index) => {
+                                return (
+                                    <ProfessinalItem
+                                    experience={experience}
+                                    key={index}
+                                    />
+                                    )
+                                })
+                            }
+                    </Box>
+                </CurriculumSectionWrapper>
 
-                                    <ExperienceContent>
-
-                                        <ExperienceHeader>
-                                            <h2>{experience.company}</h2>
-                                            <ExperienceModelTag>
-                                                <MapPin size={20}/>
-                                                {experience.model}
-                                            </ExperienceModelTag>
-                                        </ExperienceHeader>
-
-                                        <ExperienceText>
-                                            <span>
-                                                {experience.location}
-                                            </span>
-                                        </ExperienceText>
-
-                                        {experience.positions.map((position, index) => {
-                                            return (
-                                                <PositionRow key={index}>
-                                                    <PositionItem>
-                                                        <Circle size={8} weight="fill" />
-                                                        <span>{position.title}</span>
-                                                    </PositionItem>
-                                                    <PositionDate>
-                                                        <CalendarBlank size={20} />
-                                                        {formatDate(position.starts_at)}
-                                                        <span>-</span>
-                                                        <CalendarBlank size={20} />
-                                                        {
-                                                        position.ends_at
-                                                        ? formatDate(position.ends_at)
-                                                        : "Current job"
-                                                        }
-                                                    </PositionDate>
-                                                </PositionRow>
-                                            )
-                                        })}
-
-                                    </ExperienceContent>
-
-                                </ExperienceContainer>
-                            )
-                        })
-                    }
-                </SectionContainer>
-
-                <h2>Academic Education</h2>
-                <SectionContainer>
-                    {
-                        education.map((education, index) => {
-                            return (
-                                <ExperienceContainer key={index}>
-                                    <ExperienceImage src={Eldorado} alt="" />
-
-                                    <ExperienceContent>
-
-                                        <ExperienceHeader>
-                                            <h2>{education.title}</h2>
-                                        </ExperienceHeader>
-
-                                        <ExperienceText>
-                                            <span>
-                                                {education.location}
-                                            </span>
-                                        </ExperienceText>
-
-
-                                        <PositionRow>
-                                            <PositionItem>
-                                                <Circle size={8} weight="fill" />
-                                                <span>{education.university}</span>
-                                            </PositionItem>
-                                            <PositionDate>
-                                                <CalendarBlank size={20} />
-                                                {formatDate(education.starts_at)}
-                                                <span>-</span>
-                                                <CalendarBlank size={20} />
-                                                {
-                                                education.ends_at
-                                                ? formatDate(education.ends_at)
-                                                : "Current"
-                                                }
-                                            </PositionDate>
-                                        </PositionRow>
-
-                                    </ExperienceContent>
-
-                                </ExperienceContainer>
-                            )
-                        })
-                    }
-                </SectionContainer>
+                <CurriculumSectionWrapper>
+                    <h2>Academic Education</h2>
+                    <Box>
+                        {
+                            education.map((education, index) => {
+                                return (
+                                    <AcademicItem
+                                    education={education}
+                                    key={index}
+                                    />
+                                    )
+                                })
+                            }
+                    </Box>
+                </CurriculumSectionWrapper>
             </MainColumn>
 
             <SideColumn>
-                <h2>Courses</h2>
-                <SectionContainer>
-                    {courses.map((course, index) => {
-                        return (
-                            <CourseItem key={index}>
-                                <CourseTagsContainer>
-                                    {course.tags.map((tag, index) => {
-                                        return (
-                                            <CourseTag key={index}>
-                                                {tag}
-                                            </CourseTag>
-                                        )
-                                    })}
-                                </CourseTagsContainer>
-                                <h3>{course.title}</h3>
-                                <span>{course.company}</span>
-                            </CourseItem>
-                        )
-                    })}
-                </SectionContainer>
 
-                <h2>Languages</h2>
-                <SectionContainer>
-                    {
-                        languages.map((language) => {
+                <CurriculumSectionWrapper>
+                    <h2>Courses</h2>
+                    <Box>
+                        {courses.map((course, index) => {
                             return (
-                                <LanguageItem>
-                                <h3>{language.title}</h3>
-                                <span>{language.level}</span>
-                                </LanguageItem>
-                            )
-                        })
-                    }
-                </SectionContainer>
-            </SideColumn>
+                                <CourseItem
+                                course={course}
+                                key={index}
+                                />
+                                )   
+                            })}
+                    </Box>
+                </CurriculumSectionWrapper>
 
+                <CurriculumSectionWrapper>
+                    <h2>Languages</h2>
+                    <Box>
+                        {
+                            languages.map((language, index) => {
+                                return (
+                                    <LanguageItem 
+                                    language={language}
+                                    key={index}
+                                    />
+                                    )
+                                })
+                            }
+                    </Box>
+                </CurriculumSectionWrapper>
+
+            </SideColumn>
         </CurriculumContainer>
     )
 }
