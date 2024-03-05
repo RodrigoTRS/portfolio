@@ -25,6 +25,9 @@ export const lightTheme = {
   "background-800": "#191E18",
   "background-900": "#111813",
 
-  black: "#051703",
+  "black-muted": "#202420",
+  black: "#101210",
+
+  "white-muted": "ebf0eb",
   white: "#FFFFFF",
 };

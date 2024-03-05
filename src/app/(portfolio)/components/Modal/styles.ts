@@ -52,38 +52,6 @@ export const GetInTouchForm = styled.form`
   gap: 1rem;
 `;
 
-export const EmailInput = styled.input`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 12px 16px;
-
-  border: 2px solid ${(props) => props.theme["background-300"]};
-  color: ${(props) => props.theme["foreground-900"]};
-  background: ${(props) => props.theme["background-200"]};
-
-  border-radius: 8px;
-`;
-
-export const MessageInput = styled.textarea`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 160px;
-  padding: 12px 16px;
-
-  resize: none;
-
-  border: 2px solid ${(props) => props.theme["background-300"]};
-  color: ${(props) => props.theme["foreground-900"]};
-
-  background: ${(props) => props.theme["background-200"]};
-
-  border-radius: 8px;
-`;
-
 export const SubmitButton = styled(Button)`
   width: 100%;
 `;

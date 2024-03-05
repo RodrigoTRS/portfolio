@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { ButtonsSection, HeaderContainer, DesktopHeaderContent, HeaderSection, HomeAnchorLink, LinkIcon, LinksWrapper, NavContainer, NavLink, MobileHeaderContent, MobileMenuWrapper, MobileNavContainer, MobileAnchorLink } from "./styles";
-import Logo from "../../assets/logo.png"
+import Logo from "@/assets/logo.png"
 import { usePathname } from "next/navigation";
 import { Button } from "@/ui/Button";
 import { GithubLogo, LinkedinLogo, List, Moon, Sun, X } from "phosphor-react";

@@ -1,10 +1,12 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { CloseButton, EmailInput, GetInTouchForm, MessageInput, ModalContainer, ModalDescription, ModalOverlay, ModalTitle, SubmitButton } from "./styles";
+import { CloseButton, GetInTouchForm, ModalContainer, ModalDescription, ModalOverlay, ModalTitle, SubmitButton } from "./styles";
 import { X } from "phosphor-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { sendCustomEmail } from "@/utils/sendMail";
+import { Input } from "@/ui/Input";
+import { Textarea } from "@/ui/Textarea";
 
 const getInTouchFormSchema = z.object({
     email: z.string().email(),
@@ -33,12 +35,12 @@ export function GetInTouchModal() {
             <ModalTitle>Get in touch with me!</ModalTitle>
             <ModalDescription>This is a good place for you to drop a message if you want to <strong>know more about my jobs</strong>, or also if you want to <strong>hire a job.</strong></ModalDescription>
             <GetInTouchForm onSubmit={handleSubmit(handleGetInTouch)}>
-                <EmailInput
+                <Input
                     type="email"
                     placeholder="john.doe@gmail.com"
                     {...register("email")}
                     />
-                <MessageInput
+                <Textarea
                     placeholder="Your message..."
                     {...register("message")}
                     />

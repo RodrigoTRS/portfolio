@@ -18,6 +18,8 @@ export const Button = styled.button<ButtonProps>`
   border: unset;
   font-family: inherit;
 
+  width: ${(props) => (props.size === "square" ? "48px" : "")};
+
   padding: ${(props) =>
     props.size === "bg"
       ? "8px 24px"

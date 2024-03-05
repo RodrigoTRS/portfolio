@@ -18,7 +18,7 @@ export function ProfileCard({ profile }: ProfileProps) {
         <ProfileContainer>
             <ImageContainer src={Cover} alt="" />
             <ProfileContent>
-                <ProfileImage src={Profile} width={128} height={128} alt="" />
+                <ProfileImage src={"https://portfolio-repository.s3.us-east-2.amazonaws.com/profile"} width={128} height={128} alt="" />
                 <h1>Rodrigo T. Ribeiro da Silva</h1>
                 <ProfileDetails>
                     <span>{profile.job}</span>

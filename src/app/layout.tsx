@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Providers from "./providers";
-import { Footer } from "@/components/Footer";
 import "dotenv/config";
 
 const font = Poppins({subsets: ['latin'], weight: ["300", "500", "700"]});
@@ -21,7 +20,6 @@ export default function RootLayout({
       <body className={font.className}>
         <Providers>
           {children}
-          <Footer />
         </Providers>
       </body>
     </html>

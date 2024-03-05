@@ -1,9 +1,10 @@
 "use client"
 
-import { Header } from "@/components/Header";
+import { Header } from "@/app/(portfolio)/components/Header";
 import { MainContainer } from "./styles";
 import * as Dialog from '@radix-ui/react-dialog';
-import { GetInTouchModal } from "@/components/Modal";
+import { GetInTouchModal } from "@/app/(portfolio)/components/Modal";
+import { Footer } from "@/app/(portfolio)/components/Footer";
 
 
 export default function RootLayout({
@@ -17,6 +18,7 @@ export default function RootLayout({
       <MainContainer>
           {children}
       </MainContainer>
+      <Footer />
       <GetInTouchModal />
     </Dialog.Root>
   );

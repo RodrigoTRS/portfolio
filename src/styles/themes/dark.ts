@@ -25,6 +25,9 @@ export const darkTheme = {
   "background-800": "#F9FFF8",
   "background-900": "#FFFFFF",
 
-  black: "#051703",
+  "black-muted": "#202420",
+  black: "#101210",
+
+  "white-muted": "ebf0eb",
   white: "#FFFFFF",
 };

@@ -2,6 +2,7 @@ import { CalendarBlank } from "phosphor-react";
 import { CardHeader, CardText, CategoryTag, DateContainer, ShowMoreButton, TechnologiesWrapper, TechnologyTag } from "./styles";
 import { formatDate } from "@/utils/formatDate";
 import { Box } from "@/ui/Box";
+import { useRouter } from "next/navigation";
 
 interface Project {
     id: string;
@@ -19,6 +20,13 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+
+    const router = useRouter()
+
+    function handleShowMore() {
+        router.push(`/projects/${project.id}`)
+    }
+
     return (
         <Box key={project.id}>
             <CardHeader>
@@ -46,6 +54,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <ShowMoreButton
                 size="bg"
                 variant="primary"
+                onClick={handleShowMore}
             >
                 Show more
             </ShowMoreButton>
