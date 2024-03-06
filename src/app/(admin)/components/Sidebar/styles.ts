@@ -3,6 +3,7 @@ import Link from "next/link";
 import { styled } from "styled-components";
 
 export const SidebarContainer = styled.aside`
+  position: fixed;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,6 +13,7 @@ export const SidebarContainer = styled.aside`
   padding: 32px;
   width: 100%;
   max-width: 320px;
+  height: 100vh;
 `;
 
 export const Logo = styled(Image)`

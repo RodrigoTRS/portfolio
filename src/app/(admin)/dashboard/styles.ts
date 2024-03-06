@@ -13,7 +13,8 @@ export const DashboardContent = styled.div`
   align-items: center;
   justify-content: flex-start;
 
-  width: 100%;
+  width: calc(100% - 320px);
+  margin-left: 320px;
   padding: 64px;
 `;
 
@@ -35,26 +36,4 @@ export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-`;
-
-export const FileInput = styled.input`
-  /* display: none; */
-`;
-
-export const SubmitFileButton = styled.label`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 12px;
-  width: 220px;
-  border-radius: 8px;
-  margin-top: 1rem;
-
-  background: ${(props) => props.theme["green-500"]};
-  color: ${(props) => props.theme["black"]};
-
-  &:hover {
-    cursor: pointer;
-    opacity: 0.8;
-  }
 `;

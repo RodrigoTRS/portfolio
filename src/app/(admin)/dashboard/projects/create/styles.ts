@@ -23,7 +23,7 @@ export const CreateProjectFooter = styled.footer`
 
   width: 100%;
 
-  margin-top: 3rem;
+  margin: 3rem auto;
 `;
 
 export const CreateProjectForm = styled.form`
