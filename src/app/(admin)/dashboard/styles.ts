@@ -16,6 +16,7 @@ export const DashboardContent = styled.div`
   width: calc(100% - 320px);
   margin-left: 320px;
   padding: 64px;
+  gap: 2rem;
 `;
 
 export const ShortContainer = styled.div`

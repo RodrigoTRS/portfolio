@@ -1,20 +1,15 @@
-import { useProjectStore } from "@/store/projectStore"
 import { PaginationContainer, PaginationItem } from "./styles"
-import { Item } from "@radix-ui/react-select"
 
-export function Pagination() {
+interface PaginationProps {
+    elementsCount: number,
+    elementsPerPage: number,
+    activePage: number,
+    changePage: (page: number) => void;
+}
 
-    const { projects, page, perPage, changePage } = useProjectStore(state => {
-        return {
-            projects: state.projects,
-            page: state.page,
-            perPage: state.perPage,
-            changePage: state.changePage
-        }
-    })
+export function Pagination({ elementsCount, elementsPerPage, activePage, changePage}: PaginationProps) {
 
-    const numberOfProjects = projects.length
-    const totalPages = Math.round(numberOfProjects/perPage)
+    const totalPages = Math.round(elementsCount/elementsPerPage)
     const paginationItems = Array.from(
         {length: totalPages}, (_, index) => index + 1);
 
@@ -24,7 +19,7 @@ export function Pagination() {
                 return (
                     <PaginationItem
                         key={item}
-                        active={item === page ? "active" : "not"}
+                        active={item === activePage ? "active" : "not"}
                         onClick={() => {
                             changePage(item)
                         }}

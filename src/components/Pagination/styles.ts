@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 export const PaginationContainer = styled.div`
   width: 100%;
   max-width: 1120px;
-  margin-top: 32px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -23,7 +22,7 @@ export const PaginationItem = styled.button<PaginationItemProps>`
   height: 40px;
   border: unset;
 
-  border-radius: 4px;
+  border-radius: 8px;
   border: 2px solid
     ${(props) =>
       props.active === "active"

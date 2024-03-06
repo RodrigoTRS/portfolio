@@ -11,6 +11,7 @@ import { CalendarBlank, CaretLeft, GithubLogo } from "phosphor-react";
 import { CategoryTag, DateContainer, ProjectHeader, ProjectPageBottomBar, ProjectPageContainer, ProjectPageTopBar, TechnologiesWrapper, TechnologyTag } from "./styles";
 import { Anchor } from "@/ui/Anchor";
 import { formatDate } from "@/utils/formatDate";
+import { Loader } from "@/components/Loader";
 
 interface Project {
     id: string;
@@ -43,7 +44,9 @@ export default function ProjectPage() {
     }
 
     useEffect(() => {
-        fetchProject(project_id)
+        setTimeout(() => {
+            fetchProject(project_id)
+        }, 500)
     }, [])
 
     useEffect(() => {
@@ -110,7 +113,7 @@ export default function ProjectPage() {
                         </ProjectPageBottomBar>
                     </> :
                     <>
-                        <h1>Loading</h1>
+                        <Loader />
                     </>
                 }
             </ProjectPageContainer>

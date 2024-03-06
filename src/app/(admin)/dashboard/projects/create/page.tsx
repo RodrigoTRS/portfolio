@@ -110,7 +110,7 @@ export default function Create() {
                     <Button
                         variant="secondary"
                         size="sm"
-                        type="submit"
+                        type="button"
                         onClick={() => router.push("/dashboard/projects")}
                     >
                         <CaretLeft size={16}/>
