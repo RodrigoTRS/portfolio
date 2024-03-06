@@ -42,9 +42,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
             <TechnologiesWrapper>
 
-                {project.technologies.map((technology) => {
+                {project.technologies.map((technology, index) => {
                     return (
-                        <TechnologyTag>
+                        <TechnologyTag key={index}>
                             {technology}
                         </TechnologyTag>
                         )

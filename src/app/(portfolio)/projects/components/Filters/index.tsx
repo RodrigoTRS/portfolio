@@ -3,10 +3,11 @@
 import { useProjectStore } from "@/store/projectStore"
 import { CheckboxIndicator, CheckboxRoot, FilterCategory, FiltersContainer } from "./styles"
 import { Check } from "phosphor-react"
+import { useEffect } from "react"
 
 export function Filters() {
     
-    const { categories, toggleFilter } = useProjectStore(state => {
+    const { filters, categories, toggleFilter } = useProjectStore(state => {
         return {
             filters: state.filters,
             categories: state.categories,

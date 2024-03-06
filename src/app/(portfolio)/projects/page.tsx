@@ -20,6 +20,7 @@ export default function Projects() {
     })
 
     const paginatedProjects = projects.slice((page - 1) * perPage, page * perPage)
+    const needsPagination = (projects.length/perPage) > 1;
 
 
     useEffect(() => {
@@ -49,13 +50,15 @@ export default function Projects() {
                                     }
                     </ProjectsGrid>
                 </ProjectsGridContainer>
+                { needsPagination &&
+                    <Pagination
+                        activePage={page}
+                        elementsCount={projects.length}
+                        elementsPerPage={perPage}
+                        changePage={changePage}
+                    />
+                }
             </ProjectsContainer>
-            <Pagination
-                activePage={page}
-                elementsCount={projects.length}
-                elementsPerPage={perPage}
-                changePage={changePage}
-            />
         </>
     )
 }

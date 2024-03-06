@@ -45,7 +45,7 @@ export const DateContainer = styled.div`
 
 export const TechnologiesWrapper = styled.div`
   display: flex;
-  gap: 0.25rem;
+  gap: 0.5rem;
   overflow-wrap: wrap;
 `;
 

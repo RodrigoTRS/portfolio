@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { PaginationContainer, PaginationItem } from "./styles"
 
 interface PaginationProps {
@@ -9,7 +10,7 @@ interface PaginationProps {
 
 export function Pagination({ elementsCount, elementsPerPage, activePage, changePage}: PaginationProps) {
 
-    const totalPages = Math.round(elementsCount/elementsPerPage)
+    const totalPages = Math.ceil(elementsCount/elementsPerPage)
     const paginationItems = Array.from(
         {length: totalPages}, (_, index) => index + 1);
 

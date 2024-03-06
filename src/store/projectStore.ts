@@ -17,10 +17,15 @@ interface Project {
   project_url: string;
 }
 
+interface Filter {
+  type: string;
+  filters: string[];
+}
+
 export interface ProjectState {
   page: number;
   perPage: number;
-  filters: Category[];
+  filters: Filter[];
   categories: Category[];
   projects: Project[];
 
@@ -32,13 +37,9 @@ export interface ProjectState {
 export const useProjectStore = create<ProjectState>((set, get) => {
   return {
     page: 1,
-    perPage: 2,
+    perPage: 4,
     filters: [],
     categories: [
-      {
-        title: "Project type",
-        sub: ["Website", "Landing Page"],
-      },
       {
         title: "Category",
         sub: ["Front-end", "Back-end", "Full stack"],
@@ -58,6 +59,39 @@ export const useProjectStore = create<ProjectState>((set, get) => {
 
     toggleFilter: (category: string, sub: string) => {
       const { filters } = get();
+
+      const filteredCategory = filters.find((item) => item.type === category);
+
+      if (!!filteredCategory) {
+        // Categoria filtrada existe
+        const isSubFiltered = filteredCategory.filters.find(
+          (item) => item === sub
+        );
+
+        if (!!isSubFiltered) {
+          // Sub filtrada existe
+          filteredCategory.filters.filter((item) => item === sub);
+
+          if (filteredCategory.filters.length === 0) {
+            // Remover categoria
+            filters.filter((item) => item.type === category);
+          }
+        } else {
+          // Sub filtrada não existe
+          filteredCategory.filters.push(sub);
+        }
+      } else {
+        filters.push({
+          type: category,
+          filters: [sub],
+        });
+      }
+
+      console.log(filters);
+
+      set({
+        filters,
+      });
     },
 
     loadProjects: async () => {
