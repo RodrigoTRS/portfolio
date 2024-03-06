@@ -4,10 +4,16 @@ import { styled } from "styled-components";
 
 export const ProjectsContainer = styled.main`
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1rem;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
   width: 100%;
   max-width: 1120px;
+`;
+
+export const ProjectsGridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 3fr;
 
   @media (max-width: 720px) {
     display: flex;

@@ -1,29 +1,31 @@
-"use client";
-
-import { Button } from "@/ui/Button";
 import { styled } from "styled-components";
 
-export const CardHeader = styled.header`
+export const ProjectPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
   width: 100%;
+  gap: 2rem;
+  max-width: 720px;
+`;
+
+export const ProjectPageTopBar = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+`;
+
+export const ProjectPageBottomBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 `;
 
-export const CardText = styled.div`
+export const ProjectHeader = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  h2 {
-    font-size: 1.5rem;
-  }
-
-  p {
-    font-size: 0.875rem;
-    line-height: 1.7;
-    color: ${(props) => props.theme["foreground-600"]};
-  }
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const CategoryTag = styled.div`
@@ -53,8 +55,4 @@ export const TechnologyTag = styled.div`
   padding: 0 8px;
   background: ${(props) => props.theme["green-100"]};
   border-radius: 4px;
-`;
-
-export const ShowMoreButton = styled(Button)`
-  width: 100%;
 `;

@@ -38,7 +38,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </CardHeader>
             <CardText>
                 <h2>{project.title}</h2>
-                <p>{project.description}</p>
             </CardText>
 
             <TechnologiesWrapper>

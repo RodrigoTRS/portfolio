@@ -30,7 +30,7 @@ export interface ProjectState {
 export const useProjectStore = create<ProjectState>((set, get) => {
   return {
     page: 1,
-    perPage: 2,
+    perPage: 4,
     filters: [],
     categories: [
       {
