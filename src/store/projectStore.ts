@@ -18,6 +18,7 @@ export interface ProjectState {
 
   toggleFilter: (category: string) => void;
   loadProjects: () => void;
+  deleteProject: (id: string) => void;
 }
 
 export const useProjectStore = create<ProjectState>((set, get) => {
@@ -49,6 +50,14 @@ export const useProjectStore = create<ProjectState>((set, get) => {
           projects: response.data.projects,
         })
       );
+    },
+
+    deleteProject: async (id: string) => {
+      try {
+        await api.delete(`projects/${id}`);
+      } catch (err) {
+        console.log(err);
+      }
     },
   };
 });

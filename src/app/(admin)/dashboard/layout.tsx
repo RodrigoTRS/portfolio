@@ -10,11 +10,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <DashboardContainer>
-        <Sidebar />
-        <DashboardContent>
-          {children}
-        </DashboardContent>
-    </DashboardContainer>
+      <DashboardContainer>
+          <Sidebar />
+          <DashboardContent>
+            {children}
+          </DashboardContent>
+      </DashboardContainer>
+
   );
 }

@@ -1,17 +1,20 @@
 "use client"
 
 import { Button } from "@/ui/Button";
-import { CreateProjectFooter, CreateProjectForm, CreateProjectHeader } from "./styles";
-import { CaretLeft } from "phosphor-react";
-import { useRouter } from "next/navigation";
 import { Input } from "@/ui/Input";
-import { DoubleColumns, InputWrapper, ShortContainer } from "../../styles";
 import { Textarea } from "@/ui/Textarea";
+
+import { CaretLeft } from "phosphor-react";
+import { CreateProjectFooter, CreateProjectForm, CreateProjectHeader } from "./styles";
+import { DoubleColumns, InputWrapper, ShortContainer } from "../../styles";
+
+import { useRouter } from "next/navigation";
+
 import { z } from "zod";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
 import { api } from "@/lib/axios";
-import { useState } from "react";
 
 const createProjectFormSchema = z.object({
     category: z.string(),
@@ -29,7 +32,6 @@ export default function Create() {
     const router = useRouter()
 
     const { register, handleSubmit, reset, formState: {
-        errors,
         isSubmitting
     }} = useForm<CreateProjectFormData>({
         resolver: zodResolver(createProjectFormSchema)
@@ -120,6 +122,7 @@ export default function Create() {
                         variant="primary"
                         size="sm"
                         type="submit"
+                        disabled={isSubmitting}
                     >
                         Create
                     </Button>

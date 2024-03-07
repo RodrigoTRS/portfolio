@@ -6,6 +6,7 @@ import { EmptyProjectsContainer, ProjectsContainer, ProjectsGrid, ProjectsGridCo
 import { ProjectCard } from "./components/ProjectCard"
 import { Pagination } from "../../../components/Pagination"
 import { useEffect, useState } from "react"
+import { api } from "@/lib/axios"
 
 export default function Projects() {
 
