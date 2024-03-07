@@ -9,7 +9,7 @@ interface Project {
     title: string;
     description: string;
     technologies: string[];
-    category: "Front-end" | "Back-end" | "Full stack";
+    category: string;
     created_at: Date;
     repository_url: string;
     project_url: string;

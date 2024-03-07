@@ -3,45 +3,39 @@
 import { useProjectStore } from "@/store/projectStore"
 import { CheckboxIndicator, CheckboxRoot, FilterCategory, FiltersContainer } from "./styles"
 import { Check } from "phosphor-react"
-import { useEffect } from "react"
+
 
 export function Filters() {
     
-    const { filters, categories, toggleFilter } = useProjectStore(state => {
+    const { toggleFilter } = useProjectStore(state => {
         return {
-            filters: state.filters,
-            categories: state.categories,
             toggleFilter: state.toggleFilter,
         }
     })
 
+    const projectCateogries = ["Front-end", "Back-end", "Full stack"]
+
     return (
         <FiltersContainer>
-            {
-                categories.map((cateogry, index) => {
-                    return (
-                        <FilterCategory key={index}>
-                            <h3>{cateogry.title}</h3>
-                            {
-                                cateogry.sub.map((item, index) => {
-                                    return (
-                                        <span key={index}>
-                                            <CheckboxRoot onClick={() => {
-                                                toggleFilter(cateogry.title, item)
-                                            }}>
-                                                <CheckboxIndicator>
-                                                    <Check size={14} weight="bold"/>
-                                                </CheckboxIndicator>
-                                            </CheckboxRoot>
-                                            {item}
-                                        </span>
-                                    )
-                                })
-                            }
-                        </FilterCategory>
-                    )
-                })
-            }
+                <FilterCategory>
+                    <h3>Project category</h3>
+                    {
+                        projectCateogries.map((category, index) => {
+                            return (
+                                <span key={index}>
+                                    <CheckboxRoot onClick={() => {
+                                        toggleFilter(category)
+                                    }}>
+                                        <CheckboxIndicator>
+                                            <Check size={14} weight="bold"/>
+                                        </CheckboxIndicator>
+                                    </CheckboxRoot>
+                                    {category}
+                                </span>
+                            )
+                        })
+                    }
+                </FilterCategory>
         </FiltersContainer>
     )
 }

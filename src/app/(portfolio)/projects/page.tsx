@@ -9,8 +9,9 @@ import { useEffect } from "react"
 
 export default function Projects() {
 
-    const { projects, page, perPage, loadProjects, changePage } = useProjectStore(state => {
+    const { filter, projects, page, perPage, loadProjects, changePage } = useProjectStore(state => {
         return {
+            filter: state.filter,
             projects: state.projects,
             page: state.page,
             perPage: state.perPage,
@@ -19,8 +20,17 @@ export default function Projects() {
         }
     })
 
-    const paginatedProjects = projects.slice((page - 1) * perPage, page * perPage)
-    const needsPagination = (projects.length/perPage) > 1;
+    const categoriesFilteredProjects = projects.filter((item) => {
+        if (filter.length === 0) {
+            return true
+        } else {
+            return filter.includes(item.category)
+        }
+    })
+
+
+    const paginatedProjects = categoriesFilteredProjects.slice((page - 1) * perPage, page * perPage)
+    const needsPagination = (categoriesFilteredProjects.length/perPage) > 1;
 
 
     useEffect(() => {
