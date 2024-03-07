@@ -16,9 +16,7 @@ export const SidebarContainer = styled.aside`
   height: 100vh;
 `;
 
-export const Logo = styled(Image)`
-  filter: brightness(100);
-`;
+export const Logo = styled(Image)``;
 
 export const Menu = styled.nav`
   display: flex;

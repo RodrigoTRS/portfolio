@@ -45,7 +45,7 @@ export default function Projects() {
     
     useEffect(() => {
         loadProjects()
-    }, [deleteProject])
+    }, [projects])
 
     return (
         <Dialog.Root>
