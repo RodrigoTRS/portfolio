@@ -5,18 +5,19 @@ import { Filters } from "./components/Filters"
 import { EmptyProjectsContainer, ProjectsContainer, ProjectsGrid, ProjectsGridContainer } from "./styles"
 import { ProjectCard } from "./components/ProjectCard"
 import { Pagination } from "../../../components/Pagination"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export default function Projects() {
 
-    const { filter, projects, page, perPage, loadProjects, changePage } = useProjectStore(state => {
+    const [ activePage, setActivePage ] = useState(1)
+
+    const projectsPerPage = 4;
+
+    const { filter, projects, loadProjects } = useProjectStore(state => {
         return {
             filter: state.filter,
             projects: state.projects,
-            page: state.page,
-            perPage: state.perPage,
             loadProjects: state.loadProjects,
-            changePage: state.changePage
         }
     })
 
@@ -28,10 +29,16 @@ export default function Projects() {
         }
     })
 
+    function changePage(page: number) {
+        setActivePage(page)
+    }
 
-    const paginatedProjects = filteredProjects.slice((page - 1) * perPage, page * perPage)
-    const needsPagination = (filteredProjects.length/perPage) > 1;
+    const needsPagination = (filteredProjects.length/projectsPerPage) > 1;
 
+    const paginatedProjects =
+        needsPagination
+        ? filteredProjects.slice((activePage - 1) * projectsPerPage, activePage * projectsPerPage)
+        : filteredProjects
 
     useEffect(() => {
         loadProjects()
@@ -64,12 +71,11 @@ export default function Projects() {
                         }
                     </ProjectsGrid>
                 </ProjectsGridContainer>
-                { 
-                    needsPagination &&
+                {needsPagination &&
                     <Pagination
-                        activePage={page}
+                        activePage={activePage}
                         elementsCount={projects.length}
-                        elementsPerPage={perPage}
+                        elementsPerPage={projectsPerPage}
                         changePage={changePage}
                     />
                 }

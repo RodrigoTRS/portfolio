@@ -13,28 +13,17 @@ interface Project {
 }
 
 export interface ProjectState {
-  page: number;
-  perPage: number;
   filter: string[];
   projects: Project[];
 
-  changePage: (page: number) => void;
   toggleFilter: (category: string) => void;
   loadProjects: () => void;
 }
 
 export const useProjectStore = create<ProjectState>((set, get) => {
   return {
-    page: 1,
-    perPage: 4,
     filter: [],
     projects: [],
-
-    changePage: (page: number) => {
-      set({
-        page,
-      });
-    },
 
     toggleFilter: (category: string) => {
       const { filter } = get();
@@ -50,7 +39,6 @@ export const useProjectStore = create<ProjectState>((set, get) => {
       }
 
       set({
-        page: 1,
         filter: newFilter,
       });
     },

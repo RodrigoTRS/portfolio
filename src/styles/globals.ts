@@ -14,13 +14,13 @@ export const GlobalStyles = createGlobalStyle`
         box-shadow: 0px 0px 0px 2px ${(props) => props.theme["green-500"]}
     }
 
-    ::-moz-selection { /* Code for Firefox */
-        color: ${(props) => props.theme["foreground-900"]};
+    ::-moz-selection {
+        color: ${(props) => props.theme["black"]};
         background: ${(props) => props.theme["green-500"]};
     }
 
     ::selection {
-        color: ${(props) => props.theme["foreground-900"]};
+        color: ${(props) => props.theme["black"]};
         background: ${(props) => props.theme["green-500"]};
     }
 

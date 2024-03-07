@@ -19,12 +19,12 @@ export function Sidebar() {
             title: "Dashboard"
         },
         {
-            path: "/projects",
-            title: "Projects"
-        },
-        {
             path: "/profile",
             title: "Profile"
+        },
+        {
+            path: "/projects",
+            title: "Projects"
         },
         {
             path: "/languages",
