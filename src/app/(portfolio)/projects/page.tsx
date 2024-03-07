@@ -20,7 +20,7 @@ export default function Projects() {
         }
     })
 
-    const categoriesFilteredProjects = projects.filter((item) => {
+    const filteredProjects = projects.filter((item) => {
         if (filter.length === 0) {
             return true
         } else {
@@ -29,8 +29,8 @@ export default function Projects() {
     })
 
 
-    const paginatedProjects = categoriesFilteredProjects.slice((page - 1) * perPage, page * perPage)
-    const needsPagination = (categoriesFilteredProjects.length/perPage) > 1;
+    const paginatedProjects = filteredProjects.slice((page - 1) * perPage, page * perPage)
+    const needsPagination = (filteredProjects.length/perPage) > 1;
 
 
     useEffect(() => {
@@ -44,23 +44,28 @@ export default function Projects() {
                     <Filters />
                     <ProjectsGrid>
                         {
-                            paginatedProjects.length !== 0 ?  (
+                            paginatedProjects.length !== 0
+                            ? (
                                 paginatedProjects.map((project) => {
                                     return (
                                         <ProjectCard 
                                             project={project}
                                             key={project.id}
-                                            />
-                                            )
-                                        })) :
-                                        <EmptyProjectsContainer>
-                                            <h2>No projects found</h2>
-                                            <p>Try to filter for other categories.</p>
-                                        </EmptyProjectsContainer>
-                                    }
+                                        />
+                                    )
+                                })
+                            )
+                            : (
+                                <EmptyProjectsContainer>
+                                    <h2>No projects found</h2>
+                                    <p>Try to filter for other categories.</p>
+                                </EmptyProjectsContainer>
+                            )
+                        }
                     </ProjectsGrid>
                 </ProjectsGridContainer>
-                { needsPagination &&
+                { 
+                    needsPagination &&
                     <Pagination
                         activePage={page}
                         elementsCount={projects.length}

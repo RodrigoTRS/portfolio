@@ -34,12 +34,11 @@ export const MenuLink = styled(Link)`
   gap: 1rem;
 
   color: ${(props) => props.theme["white"]};
-  border: 2px solid ${(props) => props.theme["black-muted"]};
   padding: 8px;
   border-radius: 8px;
 
   span {
-    font-size: 1.125rem;
+    font-size: 1rem;
   }
 
   &:hover {
