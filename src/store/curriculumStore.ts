@@ -1,3 +1,4 @@
+import { api } from "@/lib/axios";
 import { create } from "zustand";
 
 interface Profile {
@@ -43,6 +44,8 @@ export interface CurriculumState {
   education: AcademicExperience[];
   courses: Course[];
   languages: Language[];
+
+  loadLanguages: () => void;
 }
 
 export const useCurriculumStore = create<CurriculumState>((set, get) => {
@@ -85,11 +88,18 @@ export const useCurriculumStore = create<CurriculumState>((set, get) => {
       },
     ],
 
-    languages: [
-      {
-        title: "Portuguese",
-        level: "Native language",
-      },
-    ],
+    languages: [],
+
+    loadLanguages: async () => {
+      try {
+        await api.get("/languages").then((response) =>
+          set({
+            languages: response.data.languages,
+          })
+        );
+      } catch (err) {
+        console.error(err);
+      }
+    },
   };
 });

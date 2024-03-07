@@ -7,7 +7,6 @@ import { useProjectStore } from "@/store/projectStore";
 import { useEffect, useState } from "react";
 import { ActionsTable } from "../../components/ActionsTable";
 import { Pagination } from "@/components/Pagination";
-import { api } from "@/lib/axios";
 import * as Dialog from "@radix-ui/react-dialog";
 
 

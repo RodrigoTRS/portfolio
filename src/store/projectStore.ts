@@ -45,11 +45,15 @@ export const useProjectStore = create<ProjectState>((set, get) => {
     },
 
     loadProjects: async () => {
-      await api.get("/projects").then((response) =>
-        set({
-          projects: response.data.projects,
-        })
-      );
+      try {
+        await api.get("/projects").then((response) =>
+          set({
+            projects: response.data.projects,
+          })
+        );
+      } catch (err) {
+        console.error(err);
+      }
     },
 
     deleteProject: async (id: string) => {

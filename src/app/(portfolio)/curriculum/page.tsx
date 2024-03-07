@@ -8,18 +8,24 @@ import { AcademicItem } from "./components/AcademicItem";
 import { CourseItem } from "./components/CourseItem";
 import { LanguageItem } from "./components/LanguageItem";
 import { ProfileCard } from "./components/ProfileCard";
+import { useEffect } from "react";
 
 export default function Curriculum() {
 
-    const { profile, experiences, education, courses, languages } = useCurriculumStore(state => {
+    const { profile, experiences, education, courses, languages, loadLanguages } = useCurriculumStore(state => {
         return {
             profile: state.profile,
             experiences: state.experiences,
             education: state.education,
             courses: state.courses,
             languages: state.languages,
+            loadLanguages: state.loadLanguages
         }
     })
+
+    useEffect(() => {
+        loadLanguages()
+    }, [languages])
 
     return (
         <CurriculumContainer>
