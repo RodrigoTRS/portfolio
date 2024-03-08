@@ -2,7 +2,6 @@ import { styled } from "styled-components";
 
 export const PaginationContainer = styled.div`
   width: 100%;
-  max-width: 1120px;
   display: flex;
   align-items: center;
   justify-content: flex-end;

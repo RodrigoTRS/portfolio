@@ -1,3 +1,4 @@
+import { CreateProjectFormData } from "@/app/(admin)/dashboard/projects/components/Form";
 import { api } from "@/lib/axios";
 import { create } from "zustand";
 
@@ -17,7 +18,9 @@ export interface ProjectState {
   projects: Project[];
 
   toggleFilter: (category: string) => void;
+
   loadProjects: () => void;
+  createProject: (data: CreateProjectFormData) => void;
   deleteProject: (id: string) => void;
 }
 
@@ -53,6 +56,22 @@ export const useProjectStore = create<ProjectState>((set, get) => {
         );
       } catch (err) {
         console.error(err);
+      }
+    },
+
+    createProject: async (data: CreateProjectFormData) => {
+      const techArray = data.technologies.replace(" ", "").split(",");
+      try {
+        await api.post("/projects", {
+          category: data.category,
+          title: data.title,
+          description: data.description,
+          technologies: techArray,
+          repository_url: data.repository_url,
+          project_url: data.project_url,
+        });
+      } catch (err) {
+        console.log(err);
       }
     },
 

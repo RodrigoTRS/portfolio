@@ -9,32 +9,23 @@ export default function Home() {
 
     const router = useRouter()
 
-    function handleNavigateToProjects() {
-        router.push("/projects");
-    }
-
     return (
         <HomeContent>
             <h1>👋 Welcome to my portfolio!</h1>
             <p>My name is Rodrigo Teixeira and I'm a Web Developer from Brasil. 🇧🇷</p>
             <ActionsWrapper>
-                <a 
-                    href="../../assets/curriculum-rodrigo-trs.pdf"
-                    download
-                > 
-                    <Button
-                        size="sm"
-                        variant="secondary"
-                        type="button"
-                        >
-                        <DownloadSimple size={16} />
-                        My resume
-                    </Button>
-                </a>
                 <Button
                     size="sm"
                     variant="secondary"
-                    onClick={handleNavigateToProjects}
+                    type="button"
+                    onClick={() => router.push("/curriculum")}
+                    >
+                    My resume
+                </Button>
+                <Button
+                    size="sm"
+                    variant="secondary"
+                    onClick={() => router.push("/projects")}
                 >
                     Portfolio
                 </Button>

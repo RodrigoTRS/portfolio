@@ -49,6 +49,7 @@ export default function Projects() {
     return (
         <Dialog.Root>
             <ProjectsContainer>
+
                 <ProjectsHeader>
                     <h1>Projects</h1>
                     <Button
@@ -59,12 +60,14 @@ export default function Projects() {
                         Create project
                     </Button>
                 </ProjectsHeader>
+
                 <ActionsTable
                     headers={headers}
                     rows={paginatedProjects.map((project) => {
                         return [project.id, project.title]
                     })}
                 />
+                
                 {needsPagination &&
                     <Pagination
                         activePage={activePage}
