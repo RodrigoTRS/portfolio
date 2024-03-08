@@ -1,4 +1,4 @@
-import { CreateProjectFormData } from "@/app/(admin)/dashboard/projects/components/Form";
+import { ProjectFormData } from "@/app/(admin)/dashboard/projects/components/Form";
 import { api } from "@/lib/axios";
 import { create } from "zustand";
 
@@ -18,9 +18,9 @@ export interface ProjectState {
   projects: Project[];
 
   toggleFilter: (category: string) => void;
-
   loadProjects: () => void;
-  createProject: (data: CreateProjectFormData) => void;
+  getProject: (id: string) => Project | null;
+  createProject: (data: ProjectFormData) => void;
   deleteProject: (id: string) => void;
 }
 
@@ -29,10 +29,22 @@ export const useProjectStore = create<ProjectState>((set, get) => {
     filter: [],
     projects: [],
 
+    getProject: (id: string) => {
+      const { projects } = get();
+
+      const project = projects.find((project) => project.id === id);
+
+      if (!project) {
+        return null;
+      }
+
+      return project;
+    },
+
     toggleFilter: (category: string) => {
       const { filter } = get();
 
-      let newFilter = filter;
+      let newFilter = filter.slice();
 
       const isFiltered = newFilter.includes(category);
 
@@ -49,29 +61,28 @@ export const useProjectStore = create<ProjectState>((set, get) => {
 
     loadProjects: async () => {
       try {
-        await api.get("/projects").then((response) =>
-          set({
-            projects: response.data.projects,
-          })
-        );
+        const response = await api.get("/projects");
+        set({
+          projects: response.data.projects,
+        });
       } catch (err) {
         console.error(err);
       }
     },
 
-    createProject: async (data: CreateProjectFormData) => {
+    createProject: async (data: ProjectFormData) => {
       const techArray = data.technologies.replace(" ", "").split(",");
       try {
-        await api.post("/projects", {
+        const response = await api.post("/projects", {
           category: data.category,
           title: data.title,
           description: data.description,
           technologies: techArray,
-          repository_url: data.repository_url,
           project_url: data.project_url,
+          repository_url: data.repository_url,
         });
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     },
 

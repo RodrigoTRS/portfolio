@@ -9,7 +9,7 @@ import { Input } from "@/ui/Input"
 import { Textarea } from "@/ui/Textarea"
 import { useRouter } from "next/navigation"
 
-const createProjectFormSchema = z.object({
+const projectFormSchema = z.object({
     category: z.string(),
     title: z.string(),
     description: z.string(),
@@ -18,24 +18,25 @@ const createProjectFormSchema = z.object({
     project_url: z.string(),
 })
 
-export type CreateProjectFormData = z.infer<typeof createProjectFormSchema>
+export type ProjectFormData = z.infer<typeof projectFormSchema>
 
 interface ProjectFormProps {
-    onSubmit: (data: CreateProjectFormData) => void;
-    onCancelPath: string; 
+    onSubmit: (data: ProjectFormData) => void;
+    onCancelPath: string;
+    populate?: string;
 }
 
 export function ProjectForm({ onSubmit, onCancelPath }: ProjectFormProps) {
 
     const router = useRouter()
 
-    const { register, handleSubmit, reset, formState: {
+    const { register, handleSubmit, reset, setValue, formState: {
         isSubmitting
-    }} = useForm<CreateProjectFormData>({
-        resolver: zodResolver(createProjectFormSchema)
+    }} = useForm<ProjectFormData>({
+        resolver: zodResolver(projectFormSchema)
     })
 
-    function handleFormSubmit(data: CreateProjectFormData) {
+    function handleFormSubmit(data: ProjectFormData) {
         onSubmit(data)
         reset();
     }

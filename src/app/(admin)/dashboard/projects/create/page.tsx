@@ -1,10 +1,10 @@
 "use client"
 
-import { CreateProjectHeader } from "./styles";
 import { ShortContainer } from "../../styles";
-import { CreateProjectFormData, ProjectForm } from "../components/Form";
+import { ProjectFormData, ProjectForm } from "../components/Form";
 import { useProjectStore } from "@/store/projectStore";
 import { useRouter } from "next/navigation";
+import { ProjectsHeader } from "../styles";
 
 
 export default function Create() {
@@ -17,7 +17,7 @@ export default function Create() {
         }
     })
 
-    async function handleCreateNewProject(data: CreateProjectFormData) {
+    async function handleCreateNewProject(data: ProjectFormData) {
         createProject(data);
         router.push("/dashboard/projects")
 
@@ -25,13 +25,13 @@ export default function Create() {
 
     return (
         <ShortContainer>
-            <CreateProjectHeader>
+            <ProjectsHeader>
                 <h1>Create project</h1>
-            </CreateProjectHeader>
+            </ProjectsHeader>
 
             <ProjectForm
                 onSubmit={handleCreateNewProject}
-                onCancelPath="/projects"
+                onCancelPath="/dashboard/projects"
             />
         </ShortContainer>
     )
